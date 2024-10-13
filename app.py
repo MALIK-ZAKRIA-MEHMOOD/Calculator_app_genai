@@ -17,24 +17,37 @@ def divide(x, y):
         return x / y
 
 # Streamlit App Interface
-st.title("Simple Calculator")
+st.title("🧮 Simple Calculator")
 
-# Input fields for numbers
-num1 = st.number_input("Enter first number", step=1.0)
-num2 = st.number_input("Enter second number", step=1.0)
+# Input fields for numbers with better structure
+st.markdown("### Enter Your Numbers:")
+num1 = st.number_input("Enter first number", step=1.0, format="%.2f")
+num2 = st.number_input("Enter second number", step=1.0, format="%.2f")
 
 # Dropdown for operation selection
+st.markdown("### Choose an Operation:")
 operation = st.selectbox("Select operation", ("Add", "Subtract", "Multiply", "Divide"))
 
-# Calculate result based on the selected operation
+# Button to trigger calculation
 if st.button("Calculate"):
     if operation == "Add":
         result = add(num1, num2)
+        st.success(f"**The result of addition is:** {result:.2f}")
     elif operation == "Subtract":
         result = subtract(num1, num2)
+        st.success(f"**The result of subtraction is:** {result:.2f}")
     elif operation == "Multiply":
         result = multiply(num1, num2)
+        st.success(f"**The result of multiplication is:** {result:.2f}")
     elif operation == "Divide":
         result = divide(num1, num2)
+        if isinstance(result, str):  # Error handling for division by zero
+            st.error(result)
+        else:
+            st.success(f"**The result of division is:** {result:.2f}")
+else:
+    st.info("Enter the numbers and select an operation to calculate.")
 
-    st.write(f"The result is: {result}")
+# Adding some footer styling
+st.markdown("---")
+st.markdown("### Designed by [Your Name](https://your-portfolio-link.com)")
