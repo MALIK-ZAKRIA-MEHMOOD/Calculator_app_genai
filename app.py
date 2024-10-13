@@ -50,4 +50,4 @@ else:
 
 # Adding some footer styling
 st.markdown("---")
-st.markdown("### Designed by [Your Name](https://your-portfolio-link.com)")
+st.markdown("### Designed by [MALIK ZAKRIA MEHMOOD](https://https://github.com/MALIK-ZAKRIA-MEHMOOD.com)")
